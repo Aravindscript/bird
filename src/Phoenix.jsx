@@ -2,7 +2,10 @@ import React, { forwardRef, useEffect } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 
 const Phoenix = forwardRef(function Phoenix(props, ref) {
-  const { scene, animations } = useGLTF("/phoenix.glb");
+
+ const modelPath = `${import.meta.env.BASE_URL}phoenix.glb`;
+
+ const { scene, animations } = useGLTF(modelPath);
 
   const { actions } = useAnimations(animations, ref);
 
@@ -25,4 +28,6 @@ const Phoenix = forwardRef(function Phoenix(props, ref) {
 
 export default Phoenix;
 
-useGLTF.preload("/phoenix.glb");
+useGLTF.preload(
+  `${import.meta.env.BASE_URL}phoenix.glb`
+);
